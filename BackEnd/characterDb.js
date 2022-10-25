@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/CharacterStorage", {
+mongoose.connect("mongodb://localhost:27017/", {
     useNewUrlParser: true
 }).then();
 
@@ -28,4 +28,4 @@ const characterSchema = mongoose.Schema({
 
 const CharacterModel = mongoose.model("Character", characterSchema);
 
-module.exports = { CharacterModel }
+module.exports = { CharacterModel };
