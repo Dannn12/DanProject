@@ -6,20 +6,19 @@ mongoose.connect("mongodb://127.0.0.1:27017/characterDb", {
 const characterSchema = mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     age: {
         type: Number,
         required: true,
-        unique: true
     },
     ability: {
         type: String,
-        require: true
+        required: true
     },
     fact: {
         type: String,
-        require: true
+        required: true
     },
 
 

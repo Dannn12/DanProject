@@ -1,4 +1,3 @@
-const express = require('express');
 const router = require("express").Router();
 const CharacterModel = require("../characterDb");
 
@@ -12,6 +11,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/add', async (req, res, next) => {
     try {
+        console.log("BODY:", req.body);
         const result = await CharacterModel.create(req.body);
         res.status(201).send(result)
     }

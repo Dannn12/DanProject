@@ -15,41 +15,47 @@ const Form = () => {
 
     const handleAdd = async (e) => {
         e.preventDefault();
-        try{
-            const res = await axios.post("http://127.0.0.1:4101/char/add", {name, age, ability, fact})
+        try {
+            debugger;
+            const res = await axios.post("http://127.0.0.1:4101/char/add", {
+                name,
+                age,
+                ability,
+                fact
+            });
+            setName("");
+            setAge("");
+            setAbility("");
+            setFact("");
             console.log("res", res)
         } catch (err) {
             console.error(err);
         }
-        setName("");
-        setAge("");
-        setAbility("");
-        setFact("");
     }
 
 
-    
+
     return (
         <div>
-        <form onSubmit={handleAdd}>
-        <label>Name:</label>
-        <input 
-        type="text"
-        onChange={e => setName(e.target.value)}/>
-        <br/>
-        <label>Age:</label>
-        <input type="text"
-         onChange={e => setAge(e.target.value)} />
-         <br/>
-        <label>Ability:</label>
-        <input type="text"
-        onChange={e => setAbility(e.target.value)} />
-        <br/>
-        <label>Fact:</label>
-        <input type="text"
-        onChange={e => setFact(e.target.value)} />
-       <button type="submit">Submit</button>
-        </form>
+            <form onSubmit={handleAdd}>
+                <label>Name:</label>
+                <input
+                    type="text"
+                    onChange={e => setName(e.target.value)} />
+                <br />
+                <label>Age:</label>
+                <input type="text"
+                    onChange={e => setAge(e.target.value)} />
+                <br />
+                <label>Ability:</label>
+                <input type="text"
+                    onChange={e => setAbility(e.target.value)} />
+                <br />
+                <label>Fact:</label>
+                <input type="text"
+                    onChange={e => setFact(e.target.value)} />
+                <button type="submit">Submit</button>
+            </form>
 
         </div>
     )
