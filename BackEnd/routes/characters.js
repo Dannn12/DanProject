@@ -1,6 +1,6 @@
 const express = require('express');
 const router = require("express").Router();
-const { CharacterModel } = require("../characterDb");
+const CharacterModel = require("../characterDb");
 
 router.get('/test', (req, res) => res.send('character test!'));
 
@@ -10,12 +10,16 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(404).json({ nocharacterfound: 'No Character Found' }));
 });
 
-router.post('/', (req, res) => {
-    CharacterModel.create(req.body)
-        .then(Character => res.json({ msg: 'Character added successfully' }))
-        .catch(err => res.status(404).json({ nocharacterfound: 'No Character Found' }));
+router.post('/add', async (req, res, next) => {
+    try {
+        const result = await CharacterModel.create(req.body);
+        res.status(201).send(result)
+    }
+    catch (err) {
+        return next(err)
+    }
 });
-router.put('/', (req, res) => {
+router.put('/change', (req, res) => {
     CharacterModel.findByIdAndUpdate(req.params.id, req.body)
         .then(Character => res.json({ msg: 'Updated Character' }))
         .catch(err => res.status(404).json({ nocharacterfound: 'Unable to update Character' })

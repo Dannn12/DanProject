@@ -1,24 +1,23 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/", {
+mongoose.connect("mongodb://127.0.0.1:27017/characterDb", {
     useNewUrlParser: true
-}).then();
-
+}).then(() => console.log("connect to MongoDB")).catch(err => console.log("Couldn't connect to MongoDB"));
 const characterSchema = mongoose.Schema({
-    CharacterName: {
+    name: {
         type: String,
         require: true
     },
-    CharacterAge: {
+    age: {
         type: Number,
         required: true,
         unique: true
     },
-    CharacterAbility: {
+    ability: {
         type: String,
         require: true
     },
-    CharacterInterestingFact: {
+    fact: {
         type: String,
         require: true
     },
@@ -28,4 +27,4 @@ const characterSchema = mongoose.Schema({
 
 const CharacterModel = mongoose.model("Character", characterSchema);
 
-module.exports = { CharacterModel };
+module.exports = CharacterModel;
