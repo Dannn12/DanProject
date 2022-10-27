@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { useState } from 'react';
-import './App.css';
 import axios from 'axios';
 
 
@@ -16,8 +14,7 @@ const Form = () => {
     const handleAdd = async (e) => {
         e.preventDefault();
         try {
-            debugger;
-            const res = await axios.post("http://127.0.0.1:4101/char/add", {
+            const res = await axios.post("http://127.0.0.1:4101/char/add", {    
                 name,
                 age,
                 ability,
