@@ -26,7 +26,7 @@ useEffect(() => {
                             <Card.Text>{`age: ${char.age}`}</Card.Text>
                             <Card.Text>{`ability: ${char.ability}`}</Card.Text>
                             <Card.Text>{`fact: ${char.fact}`}</Card.Text>
-                            <Button style={{}} type="primary">Update</Button><Button type="danger">Delete</Button>
+                            <Button style={{}} type="primary">Update</Button><Button type="danger" onClick={handleDelete(char.id)}>Delete</Button>
                         </Card.Body>
                     </Card>
                 ))
